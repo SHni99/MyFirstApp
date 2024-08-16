@@ -44,3 +44,16 @@ export async function configureNotificationChannels() {
     });
   }
 }
+export async function scheduleTimeBasedNotification(date, title, body) {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: title,
+        body: body,
+        sound: true, // Optional: plays default notification sound
+      },
+      trigger: {
+        date: date, // The date and time to trigger the notification
+      },
+    });
+  }
+  

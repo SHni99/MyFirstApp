@@ -9,21 +9,33 @@ import AppNavigator from "./navigation/AppNavigator";
 import { RootSiblingParent } from "react-native-root-siblings";
 import { Provider as LocationProvider } from "./components/LocationContext";
 import { useState, useEffect, useRef } from 'react';
-import { registerForPushNotificationsAsync, handleNotificationListeners, configureNotificationChannels } from './components/notifications';
+import { scheduleTimeBasedNotification, registerForPushNotificationsAsync, handleNotificationListeners, configureNotificationChannels } from './components/notifications';
 
 export default function App(){
   useEffect(() => {
     registerForPushNotificationsAsync();
-    
-    const cleanUpListeners = handleNotificationListeners();
-
+    triggerImmediateNotification();
     configureNotificationChannels();
+    const cleanUpListeners = handleNotificationListeners();
 
     // Clean up listeners on unmount
     return () => {
       cleanUpListeners();
     };
   }, []);
+
+  const triggerImmediateNotification = () => {
+    console.log('Scheduling notification...');
+    Notifications.scheduleNotificationAsync({
+        content: {
+          title: "Welcome!",
+          body: "This notification was triggered as soon as you opened the app.",
+          sound: true,
+        },
+        trigger: null, // Trigger immediately
+      });then(() => console.log('Notification scheduled.'));
+    };
+    };
   return (
     <LocationProvider>
         <RootSiblingParent>
@@ -33,7 +45,6 @@ export default function App(){
         </RootSiblingParent>
       </LocationProvider>
   );
-}
 
 const styles = StyleSheet.create({
   container: {
