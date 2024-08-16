@@ -4,5 +4,17 @@
     "slug": "MyFirstApp",
     "version": "1.0.0"
   },
+  "ios": {
+    "supportsTablet": true, 
+    "bundleIdentifier": "com.yourname.yourapp", 
+      "UIBackgroundModes": [
+        "fetch", 
+        "remote-notification" 
+      ]
+    },
+  "android": {
+      "package": "com.yourname.yourapp", 
+      "googleServicesFile": "./google-services.json"
+    },
   "name": "myfirstapp"
 }
