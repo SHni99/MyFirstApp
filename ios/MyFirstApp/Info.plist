@@ -4,6 +4,12 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location to provide location-based notifications.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to provide location-based notifications.</string>
+	<key>NSPushNotificationsUsageDescription</key>
+	<string>We would like to send you notifications for updates and alerts.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
