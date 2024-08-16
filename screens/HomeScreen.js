@@ -26,13 +26,13 @@ const MedicationItem = ({ iconColor, medicationName, dosage }) => {
   const getIconName = (color) => {
     switch(color) {
       case 'red':
-        return 'triangle'; // Update to actual icon name if using Ionicons
+        return 'triangle';
       case 'yellow':
-        return 'ellipse'; // Update to actual icon name if using Ionicons
+        return 'ellipse'; 
       case 'green':
-        return 'star'; // This one should be available
+        return 'star'; 
       default:
-        return 'alert-circle'; // Default icon
+        return 'alert-circle'; 
     }
   };
 
@@ -108,163 +108,6 @@ const HomeScreen = ({ navigation }) => {
       </ScrollView>
     </SafeAreaView>
   );
-  // return (
-  //   <ImageBackground
-  //     source={require("../assets/background.png")}
-  //     resizeMode="cover"
-  //     style={{ width: "100%", height: "100%" }}
-  //   >
-  //     <SafeAreaView
-  //       style={
-  //         isPanic || isFall
-  //           ? { backgroundColor: "#ffa45c", flex: 1 }
-  //           : { flex: 1 }
-  //       }
-  //     >
-  //       <KeyboardAvoidingView style={styles.container}>
-  //         <View style={styles.welcomecontainer}>
-  //           <View style={styles.welcomecontainerContent}>
-  //             <View
-  //               style={{
-  //                 display: "flex",
-  //                 flexDirection: "column",
-  //                 marginTop: 20,
-  //                 justifyContent: "center",
-  //                 flex: 1,
-  //                 alignItems: "center",
-  //               }}
-  //             >
-  //               <Image
-  //                 source={
-  //                   !isPanic && !isFall
-  //                     ? require("../assets/logo-white.png")
-  //                     : require("../assets/logo.png")
-  //                 }
-  //                 style={!isPanic && !isFall ? styles.whiteLogo : styles.logo}
-  //               />
-  //               <Text style={[styles.welcometext]}>{getWelcomeText()}</Text>
-  //               <View
-  //                 style={[
-  //                   styles.batteryPercentContainer,
-  //                   MPUMsg === "on"
-  //                     ? styles.batteryPercentContainerOn
-  //                     : styles.batteryPercentContainerOff,
-  //                 ]}
-  //               >
-  //                 <Text style={styles.batteryPercent}>
-  //                   Device Status: {MPUMsg.toLocaleUpperCase()}{" "}
-  //                 </Text>
-  //               </View>
-  //             </View>
-
-  //             <TouchableOpacity
-  //               style={styles.settingBtn}
-  //               onPress={() => navigation.openDrawer()}
-  //             >
-  //               <Feather name="menu" size={24} color="grey" />
-  //             </TouchableOpacity>
-  //           </View>
-  //         </View>
-
-  //         <View style={styles.mainContainer}>
-  //           <View style={[styles.weatherContainer, styles.shadowProp]}>
-  //             <View style={styles.weatherTextContainer}>
-  //               <View style={styles.mainWeather}>
-  //                 <Text
-  //                   style={{
-  //                     fontSize: "45",
-  //                     fontWeight: "bold",
-  //                     letterSpacing: -2,
-  //                     color: "#43356B",
-  //                   }}
-  //                 >
-  //                   {Math.round(forecast.main.temp)}˚C
-  //                 </Text>
-  //               </View>
-  //               <View style={styles.miscWeatherText}>
-  //                 <Text
-  //                   style={{
-  //                     fontSize: "20",
-  //                     fontWeight: "bold",
-  //                   }}
-  //                 >
-  //                   {current.main}
-  //                 </Text>
-  //                 <Text>
-  //                   Feels like {Math.round(forecast.main.feels_like)}˚C
-  //                 </Text>
-  //               </View>
-  //             </View>
-  //             <View style={styles.weatherIcon}>
-  //               <Image
-  //                 style={styles.largeIcon}
-  //                 source={{
-  //                   uri: `http://openweathermap.org/img/wn/${current.icon}@4x.png`,
-  //                 }}
-  //               />
-  //             </View>
-  //           </View>
-  //           <View
-  //             style={{
-  //               display: "flex",
-  //               flexDirection: "row",
-  //               justifyContent: "space-between",
-  //               flex: 1,
-  //               padding: 20,
-  //             }}
-  //           >
-  //             <View style={[styles.emergencyContainer, { marginRight: 10 }]}>
-  //               <Image
-  //                 source={
-  //                   isPanic
-  //                     ? require("../assets/panic-red.png")
-  //                     : require("../assets/panic-green.png")
-  //                 }
-  //                 style={styles.emergencyIcon}
-  //               />
-  //               <Text style={styles.btnHeader}>Panic</Text>
-  //               <Text
-  //                 style={[
-  //                   styles.activityIndicator,
-  //                   isPanic ? styles.activated : styles.notActivated,
-  //                 ]}
-  //               >
-  //                 {isPanic ? "ACTIVATED" : "NOT ACTIVATED"}
-  //               </Text>
-  //               <Text style={{ textAlign: "center", fontStyle: "italic" }}>
-  //                 Last activated:{"\n"}
-  //                 {lastPanicDate ? lastPanicDate : "No last date recorded"}
-  //               </Text>
-  //             </View>
-  //             <View style={[styles.emergencyContainer, { marginLeft: 10 }]}>
-  //               <Image
-  //                 source={
-  //                   isFall
-  //                     ? require("../assets/fall-red.png")
-  //                     : require("../assets/fall-green.png")
-  //                 }
-  //                 style={styles.emergencyIcon}
-  //               />
-  //               <Text style={styles.btnHeader}>Fall</Text>
-  //               <Text
-  //                 style={[
-  //                   styles.activityIndicator,
-  //                   isFall ? styles.activated : styles.notActivated,
-  //                 ]}
-  //               >
-  //                 {isFall ? "USER HAS FALLEN" : "NO FALL"}
-  //               </Text>
-  //               <Text style={{ textAlign: "center", fontStyle: "italic" }}>
-  //                 Last fall:{"\n"}
-  //                 {lastFallDate ? lastFallDate : "No last date recorded"}
-  //               </Text>
-  //             </View>
-  //           </View>
-  //         </View>
-  //       </KeyboardAvoidingView>
-  //     </SafeAreaView>
-  //   </ImageBackground>
-  // );
 };
 const styles = StyleSheet.create({
   container: {

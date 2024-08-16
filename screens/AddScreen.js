@@ -139,7 +139,7 @@ const MedicationItem = ({ iconType, medicationName, dosage, timing }) => {
 };
 
 
-const ContactsScreen = () => {
+const AddScreen = () => {
 
   // const currentUser = 1;
   // const [message, setMessage] = useState<string>("");
@@ -280,4 +280,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ContactsScreen;
+export default AddScreen;
