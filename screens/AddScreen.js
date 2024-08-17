@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  PermissionsAndroid,
+  Platform,
 } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,6 +18,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 const { height, width } = Dimensions.get("screen");
 import { useNavigation } from '@react-navigation/native';
+import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
+import * as ImagePicker from 'expo-image-picker';
+import ImageUploadButton from "../components/ImageUploadButton";
+import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 
 
 // const BEARER_TOKEN_GEMINI = process.env.REACT_APP_GEMINI_KEY;
@@ -180,6 +186,7 @@ const AddScreen = () => {
 
   // Above is the code for germini
   const navigation = useNavigation();
+  const [image, setImage] = useState(null);
   const navigateToSettings = () => {
     navigation.navigate('settings');
   };
@@ -195,9 +202,9 @@ const AddScreen = () => {
       </View>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>My Medications</Text>
-        <TouchableOpacity>
-          <MaterialCommunityIcons name="plus-box" size={24} color="black" />
-        </TouchableOpacity>
+        <ActionSheetProvider>
+          <ImageUploadButton/>
+        </ActionSheetProvider>
       </View>
       <ScrollView style={styles.scrollView}>
         <MedicationItem
@@ -250,7 +257,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    color: '#000'
+    color: '#000',
+    marginRight: 220,
   },
   scrollView: {
     paddingHorizontal: 20,
