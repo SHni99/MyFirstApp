@@ -25,11 +25,11 @@ const MedicationItem = ({ iconColor, medicationName, dosage }) => {
   // Determine icon based on the color/type
   const getIconName = (color) => {
     switch(color) {
-      case 'red':
+      case 'orange':
         return 'triangle';
-      case 'yellow':
+      case 'red':
         return 'ellipse'; 
-      case 'green':
+      case 'blue':
         return 'star'; 
       default:
         return 'alert-circle'; 
@@ -69,39 +69,39 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Morning</Text>
           <MedicationItem
-            iconColor="red"
-            medicationName="Furosemide"
-            dosage="1 Tablet"
-          />
-          <MedicationItem
-            iconColor="yellow"
-            medicationName="Acebutolol"
+            iconColor="orange"
+            medicationName="Paracetamol"
             dosage="2 Tablets"
           />
           <MedicationItem
-            iconColor="green"
-            medicationName="Captopril"
+            iconColor="red"
+            medicationName="Metoclopramide"
             dosage="1 Tablet"
+          />
+          <MedicationItem
+            iconColor="blue"
+            medicationName="Anarex"
+            dosage="2 Tablets"
           />
         </View>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>After lunch</Text>
           <MedicationItem
-            iconColor="green"
-            medicationName="Captopril"
-            dosage="1 Tablet"
+            iconColor="orange"
+            medicationName="Paracetamol"
+            dosage="2 Tablets"
           />
         </View>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>After Dinner</Text>
           <MedicationItem
-            iconColor="yellow"
-            medicationName="Acebutolol"
+            iconColor="blue"
+            medicationName="Anarex"
             dosage="2 Tablets"
           />
           <MedicationItem
             iconColor="red"
-            medicationName="Furosemide"
+            medicationName="Metoclopramide"
             dosage="1 Tablet"
           />
         </View>

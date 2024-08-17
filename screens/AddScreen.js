@@ -11,6 +11,7 @@ import {
   ScrollView,
   PermissionsAndroid,
   Platform,
+  Image
 } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -104,7 +105,48 @@ import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 //   }
 // }
 
-const MedicationItem = ({ iconType, medicationName, dosage, timing }) => {
+// const MedicationItem = ({ iconType, medicationName, dosage, timing }) => {
+//   const iconMap = {
+//     triangle: 'triangle',
+//     circle: 'ellipse',
+//     star: 'star'
+//   };
+
+//   const getIconColor = (shape) => {
+//     switch(shape) {
+//       case 'triangle':
+//         return 'orange'; 
+//       case 'circle':
+//         return 'red'; 
+//       case 'star':
+//         return 'blue';
+//       default:
+//         return 'black';
+//     }
+//   };
+  
+//   return (
+//     <View style={styles.medicationItem}>
+//       <MaterialCommunityIcons name={iconMap[iconType]} size={30} color={getIconColor(iconType)} style={styles.icon} />
+//       <View style={styles.medInfo}>
+//         <Text style={styles.medName}>{medicationName}</Text>
+//         <Text>{dosage}</Text>
+//         <Text>{timing}</Text>
+//       </View>
+//       <View style={styles.actions}>
+//         <TouchableOpacity>
+//           <MaterialCommunityIcons name="pencil" size={24} color="black" />
+//         </TouchableOpacity>
+//         <TouchableOpacity>
+//           <MaterialCommunityIcons name="delete" size={24} color="black" />
+//         </TouchableOpacity>
+//       </View>
+//     </View>
+//   );
+// };
+
+
+const MedicationItem = ({ iconType, medicationName, dosage, timing, imageSource }) => {
   const iconMap = {
     triangle: 'triangle',
     circle: 'ellipse',
@@ -114,11 +156,11 @@ const MedicationItem = ({ iconType, medicationName, dosage, timing }) => {
   const getIconColor = (shape) => {
     switch(shape) {
       case 'triangle':
-        return 'red'; 
+        return 'orange'; 
       case 'circle':
-        return 'yellow'; 
+        return 'red'; 
       case 'star':
-        return 'green';
+        return 'blue';
       default:
         return 'black';
     }
@@ -126,8 +168,9 @@ const MedicationItem = ({ iconType, medicationName, dosage, timing }) => {
   
   return (
     <View style={styles.medicationItem}>
-      <MaterialCommunityIcons name={iconMap[iconType]} size={30} color={getIconColor(iconType)} style={styles.icon} />
+      <Image source={imageSource} style={styles.image} />
       <View style={styles.medInfo}>
+        <MaterialCommunityIcons name={iconMap[iconType]} size={30} color={getIconColor(iconType)} style={styles.icon} />
         <Text style={styles.medName}>{medicationName}</Text>
         <Text>{dosage}</Text>
         <Text>{timing}</Text>
@@ -143,6 +186,7 @@ const MedicationItem = ({ iconType, medicationName, dosage, timing }) => {
     </View>
   );
 };
+
 
 
 const AddScreen = () => {
@@ -207,27 +251,27 @@ const AddScreen = () => {
         </ActionSheetProvider>
       </View>
       <ScrollView style={styles.scrollView}>
-        <MedicationItem
-          iconType="triangle"
-          medicationName="Furosemide"
-          dosage="1 tablet"
-          timing="1 Hour before or 2 hours after food       
-                  Every morning, Every night"
-        />
-        <MedicationItem
-          iconType="circle"
-          medicationName="Acebutolol"
-          dosage="2 tablets"
-          timing="1 Hour before or 2 hours after food       
-                  Every morning, Every night"
-        />
-        <MedicationItem
-          iconType="star"
-          medicationName="Captopril"
-          dosage="1 tablet"
-          timing="1 Hour before or 2 hours after food       
-                  Every morning, Every night"
-        />
+      <MedicationItem
+        iconType="triangle"
+        medicationName="Paracetamol"
+        dosage="2 tablets"
+        timing="3 times a day before or after food"
+        imageSource={require('../assets/trianglemed.jpg')}
+      />
+      <MedicationItem
+        iconType="circle"
+        medicationName="Metoclopramide"
+        dosage="1 tablet"
+        timing="3 times a day. Take half to one hour before food"
+        imageSource={require('../assets/circlemed.jpg')}
+      />
+      <MedicationItem
+        iconType="star"
+        medicationName="Anarex"
+        dosage="2 tablets"
+        timing="3 times a day"
+        imageSource={require('../assets/starmed.jpg')}
+      />
       </ScrollView>
     </SafeAreaView>
   );
@@ -264,16 +308,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   medicationItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
     backgroundColor: 'white',
     padding: 10,
     marginVertical: 5,
     borderRadius: 10,
+    alignItems: 'center', // Align items in the center for the column setup
   },
   medInfo: {
-    flex: 1,
-    marginLeft: 10,
+    flex: 1,  // Take up remaining space
+    marginLeft: 20, // Space between the image and this text container
+    justifyContent: 'center', // Vertically center the content
+    maxWidth: '50%', // Prevents text from extending full width, adjust according to your layout needs
   },
   medName: {
     fontSize: 16,
@@ -281,10 +326,16 @@ const styles = StyleSheet.create({
   },
   actions: {
     flexDirection: 'row',
+    marginTop: 10, // Add space between the info and actions
   },
   icon: {
-    width: 30,
-    height: 30,
+    marginBottom: 5, // Space between icon and text
+  },
+  image: {
+    width: 150,  // Increase width for a larger image
+    height: 100, // Adjust height as necessary
+    resizeMode: 'cover', // Ensure the aspect ratio fills the frame
+    marginBottom: 10,  // Space between the image and the text below
   }
 });
 

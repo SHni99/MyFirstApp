@@ -50,10 +50,10 @@ export async function triggerImmediateNotification (){
         identifier: "myidentifer",
         content: {
           title: "medicare",
-          body: "Its time to eat medicine",
+          body: "Medication consumed",
           sound: true,
         },
-        trigger: null, // Trigger immediately
+        trigger: { seconds: 5 } , // Trigger immediately
       });then(() => console.log('Notification scheduled.'));
     };
  
