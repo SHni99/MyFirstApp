@@ -44,16 +44,17 @@ export async function configureNotificationChannels() {
     });
   }
 }
-export async function scheduleTimeBasedNotification(date, title, body) {
+export async function triggerImmediateNotification (){
+    console.log('Scheduling notification...');
     await Notifications.scheduleNotificationAsync({
-      content: {
-        title: title,
-        body: body,
-        sound: true, // Optional: plays default notification sound
-      },
-      trigger: {
-        date: date, // The date and time to trigger the notification
-      },
-    });
-  }
+        identifier: "myidentifer",
+        content: {
+          title: "medicare",
+          body: "Its time to eat medicine",
+          sound: true,
+        },
+        trigger: null, // Trigger immediately
+      });then(() => console.log('Notification scheduled.'));
+    };
+ 
   
